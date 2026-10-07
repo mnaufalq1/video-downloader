@@ -1,6 +1,7 @@
 
 [build]
-  command = "pnpm install && pnpm build"
+  base = "fe"
+  command = "pnpm install --ignore-workspace --prod=false --no-frozen-lockfile && pnpm build"
   publish = "dist"
 
 [context.production.environment]
