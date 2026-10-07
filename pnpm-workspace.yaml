@@ -1,0 +1,9 @@
+allowBuilds:
+  esbuild: true
+  ffmpeg-static: true
+  yt-dlp-exec: true
+
+# NB: machine ini tidak ada Python, sehingga preinstall yt-dlp-exec (bin-version-check)
+# selalu fail dan blocking install. Binary yt-dlp.exe + ffmpeg sudah ter-bundle dalam
+# pacote sendiri, jadi lifecycle scripts dependency tidak diperlukan.
+ignoreScripts: true
