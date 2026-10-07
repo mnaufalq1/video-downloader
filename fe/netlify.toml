@@ -1,0 +1,12 @@
+
+[build]
+  command = "pnpm install && pnpm build"
+  publish = "dist"
+
+[context.production.environment]
+  VITE_API_URL = "https://video-downloader-produk.up.railway.app"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
