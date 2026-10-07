@@ -1,8 +1,9 @@
 // Helper semua call ke API backend.
-// NB: menggunakan relative path `/api/...` — Vite proxy diteruskan ke
-// backend Express (localhost:5000), jadi frontend bisa run dari host mana pun.
-
-const API_BASE = '/api/media';
+// - Dev lokal: pakai relative path `/api/...` -> diteruskan Vite proxy
+//   ke backend Express (localhost:5000), jadi frontend bisa run dari host mana pun.
+// - Production: set VITE_API_URL (mis. URL Railway) -> request langsung ke backend itu.
+const API_URL = (import.meta.env.VITE_API_URL || '').trim().replace(/\/$/, '');
+const API_BASE = API_URL ? `${API_URL}/api/media` : '/api/media';
 
 /**
  * GET-info media dari URL (POST /api/media/info)
