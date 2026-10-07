@@ -7,7 +7,7 @@ proxy `/api/*` diteruskan ke backend di `http://localhost:5000`.
 
 ```bash
 # 1. Install dependsi (di folder ini)
-pnpm install
+pnpm install --ignore-workspace --prod=false --no-frozen-lockfile
 
 # 2. Start backend Express (di folder root project)
 pnpm dev
@@ -24,6 +24,15 @@ pnpm dev
 pnpm build     # output di frontend/dist
 pnpm preview   # serve hasil build lokal
 ```
+
+## Deploy Netlify
+
+Konfigurasi `netlify.toml` memakai base directory `fe` dan publish directory `dist`
+(relatif terhadap base directory). Instalasi memakai `--ignore-workspace` agar
+dependency frontend, termasuk Vite, terpasang di `fe/node_modules` tanpa memakai
+workspace dan lockfile backend di root. Flag `--prod=false` memastikan dev dependency
+ikut terpasang, sedangkan `--no-frozen-lockfile` mengizinkan pembuatan lockfile frontend
+yang belum tersedia di repository saat build CI.
 
 ## Struktur
 
